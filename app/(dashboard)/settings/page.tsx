@@ -1,7 +1,7 @@
 import { createServerClient } from '@/lib/supabase/server'
 
 export default async function SettingsPage() {
-  const supabase = createServerClient()
+  const supabase = await createServerClient()
   const { data: { user } } = await supabase.auth.getUser()
   const { data: profile } = await supabase.from('users').select('*').eq('id', user!.id).single()
 

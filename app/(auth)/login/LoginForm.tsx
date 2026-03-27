@@ -1,5 +1,6 @@
 'use client'
-import { useFormState, useFormStatus } from 'react-dom'
+import { useActionState } from 'react'
+import { useFormStatus } from 'react-dom'
 import Link from 'next/link'
 import { loginAction } from '@/lib/auth/actions'
 import { BriefcaseIcon } from '@/components/ui/BriefcaseIcon'
@@ -15,7 +16,7 @@ function SubmitButton() {
 }
 
 export default function LoginForm() {
-  const [state, action] = useFormState(loginAction, {})
+  const [state, action] = useActionState(loginAction, {})
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
       <div className="w-full max-w-sm">

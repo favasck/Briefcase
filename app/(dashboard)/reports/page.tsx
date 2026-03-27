@@ -3,7 +3,7 @@ import { format } from 'date-fns'
 import Link from 'next/link'
 
 export default async function ReportsPage() {
-  const supabase = createServerClient()
+  const supabase = await createServerClient()
   const { data: reports } = await supabase
     .from('reports')
     .select('id, title, type, status, created_at, portfolio_companies(name)')

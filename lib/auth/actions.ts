@@ -21,7 +21,7 @@ export async function loginAction(_prev: AuthState, formData: FormData): Promise
     return { fieldErrors }
   }
 
-  const supabase = createServerClient()
+  const supabase = await createServerClient()
   const { error } = await supabase.auth.signInWithPassword({ email, password })
   if (error) return { error: 'Invalid email or password.' }
   redirect('/dashboard')
@@ -49,7 +49,7 @@ export async function signupAction(_prev: AuthState, formData: FormData): Promis
     return { fieldErrors }
   }
 
-  const supabase = createServerClient()
+  const supabase = await createServerClient()
   const { data, error } = await supabase.auth.signUp({
     email,
     password,
@@ -72,7 +72,7 @@ export async function signupAction(_prev: AuthState, formData: FormData): Promis
 }
 
 export async function logoutAction() {
-  const supabase = createServerClient()
+  const supabase = await createServerClient()
   await supabase.auth.signOut()
   redirect('/login')
 }

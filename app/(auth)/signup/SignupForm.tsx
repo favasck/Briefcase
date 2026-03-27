@@ -1,6 +1,7 @@
 'use client'
 import { useState } from 'react'
-import { useFormState, useFormStatus } from 'react-dom'
+import { useActionState } from 'react'
+import { useFormStatus } from 'react-dom'
 import Link from 'next/link'
 import { signupAction } from '@/lib/auth/actions'
 import { BriefcaseIcon } from '@/components/ui/BriefcaseIcon'
@@ -16,7 +17,7 @@ function SubmitButton() {
 }
 
 export default function SignupForm() {
-  const [state, action] = useFormState(signupAction, {})
+  const [state, action] = useActionState(signupAction, {})
   const [role, setRole] = useState<'investor' | 'company_admin'>('investor')
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4 py-10">

@@ -3,7 +3,7 @@ import { format } from 'date-fns'
 import Link from 'next/link'
 
 export default async function DashboardPage() {
-  const supabase = createServerClient()
+  const supabase = await createServerClient()
   const { data: { user } } = await supabase.auth.getUser()
 
   const { data: profile } = await supabase.from('users').select('full_name, role').eq('id', user!.id).single()

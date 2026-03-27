@@ -2,7 +2,7 @@ import { createServerClient } from '@/lib/supabase/server'
 import Link from 'next/link'
 
 export default async function InvestorsPage() {
-  const supabase = createServerClient()
+  const supabase = await createServerClient()
   const { data: firms } = await supabase
     .from('investment_firms')
     .select('id, name, website, description, created_at')
